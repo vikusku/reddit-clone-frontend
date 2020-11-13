@@ -29,6 +29,8 @@ export class SignUpComponent implements OnInit {
     });
   }
   
+
+  // TODO handle error here
   signup(): void {
     this.signupRequestPayload.username = this.signupForm.get('username').value;
     this.signupRequestPayload.email = this.signupForm.get('email').value;
