@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { AuthModule } from './auth/auth.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { TokenInterceptor } from './token-interceptor';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { LoginComponent } from './auth/login/login.component';
+import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import { PostTileComponent } from './shared/post-tile/post-tile.component';
 import { SideBarComponent } from './shared/side-bar/side-bar.component';
@@ -21,11 +23,16 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListSubredditsComponent } from './subreddit/list-subreddits/list-subreddits.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { ViewPostComponent } from './post/view-post/view-post.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    LoginComponent,
+    SignUpComponent,
+    UserProfileComponent,
     HomeComponent,
     PostTileComponent,
     SideBarComponent,
@@ -34,18 +41,19 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     CreateSubredditComponent,
     CreatePostComponent,
     ListSubredditsComponent,
+    ViewPostComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
     HttpClientModule,
     NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FontAwesomeModule,
     ReactiveFormsModule,
-    EditorModule
+    EditorModule,
+    NgbModule
   ],
   providers: [
     {
