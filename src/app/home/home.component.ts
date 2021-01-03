@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   posts: Array<PostModel> = [];
 
   constructor(private postService: PostService) {
-    this.postService.getAllPosts().subscribe(post => {
+    this.postService.getNewPosts().subscribe(post => {
       this.posts = post;
     });
   }

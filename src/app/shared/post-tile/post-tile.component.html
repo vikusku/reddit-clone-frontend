@@ -3,21 +3,20 @@
         <app-vote-button [post]="post"></app-vote-button>
     </div>
     <div class="col-md-11">
-        <span class="subreddit-info">
-            <span class="subreddit-text"><a class="posturl" routerLink="">{{post.subredditName}}</a></span>
-            <span> . Posted by <a class="username" routerLink="/user/{{post.userName}}">{{post.userName}}</a></span>
-            <span> . {{post.duration}}</span>
+        <span>
+            <span class="subreddit-info"><a class="posturl" routerLink="">{{post.subredditName}}</a></span>
+            <span class="user-info">Posted by <a class="username" routerLink="/user/{{post.userName}}">{{post.userName}}</a> {{post.duration}}</span>
         </span>
         <hr />
         <div class="post-title">
-            <a class="postname" href="{{post.url}}">{{post.postName}}</a>
+            <a class="postname" (click)="goToPost(post.id)">{{post.postName}}</a>
         </div>
         <div>
                 <p class="post-text" [innerHtml]="post.description"></p>
         </div>
         <hr />
         <span>
-            <a class="btnCommments" role="button">
+            <a class="btnCommments" role="button" (click)="goToPost(post.id)">
                 <fa-icon [icon]="faComments"></fa-icon>
                 Comments({{post.commentCount}})
             </a>
