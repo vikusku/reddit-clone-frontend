@@ -13,15 +13,6 @@ export class PostService {
 
   constructor(private http: HttpClient, private mockDataService: MockDataService) { }
 
-  getAllPosts(): Observable<Array<PostModel>> {
-    // return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts');
-
-    return new Observable(subscriber => {
-      subscriber.next(this.mockDataService.getAllPosts());
-      subscriber.complete();
-    });
-  }
-
   getHotPosts(): Observable<Array<PostModel>> {
     // return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts/hot');
 
@@ -31,8 +22,26 @@ export class PostService {
     });
   }
 
+  getTopPosts(): Observable<Array<PostModel>> {
+    // return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts/top');
+
+    return new Observable(subscriber => {
+      subscriber.next(this.mockDataService.getAllPosts());
+      subscriber.complete();
+    });
+  }
+
   getNewPosts(): Observable<Array<PostModel>> {
     // return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts/new');
+
+    return new Observable(subscriber => {
+      subscriber.next(this.mockDataService.getAllPosts());
+      subscriber.complete();
+    });
+  }
+
+  getAllPosts(): Observable<Array<PostModel>> {
+    // return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts');
 
     return new Observable(subscriber => {
       subscriber.next(this.mockDataService.getAllPosts());

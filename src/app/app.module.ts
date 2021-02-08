@@ -16,7 +16,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { HeaderComponent } from './header/header.component';
 import { TokenInterceptor } from './token-interceptor';
-import { HomeComponent } from './home/home.component';
 import { PostTileComponent } from './shared/post-tile/post-tile.component';
 import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { SubredditSideBarComponent } from './shared/subreddit-side-bar/subreddit-side-bar.component';
@@ -25,6 +24,8 @@ import { CreateSubredditComponent } from './subreddit/create-subreddit/create-su
 import { ListSubredditsComponent } from './subreddit/list-subreddits/list-subreddits.component';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ViewPostComponent } from './post/view-post/view-post.component';
+import { HomeModule } from './home/home.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -34,11 +35,6 @@ import { ViewPostComponent } from './post/view-post/view-post.component';
     LoginComponent,
     SignUpComponent,
     UserProfileComponent,
-    HomeComponent,
-    PostTileComponent,
-    SideBarComponent,
-    SubredditSideBarComponent,
-    VoteButtonComponent,
     CreateSubredditComponent,
     CreatePostComponent,
     ListSubredditsComponent,
@@ -54,7 +50,9 @@ import { ViewPostComponent } from './post/view-post/view-post.component';
     FontAwesomeModule,
     ReactiveFormsModule,
     EditorModule,
-    NgbModule
+    NgbModule,
+    HomeModule,
+    SharedModule,
   ],
   // providers: [
   //   {

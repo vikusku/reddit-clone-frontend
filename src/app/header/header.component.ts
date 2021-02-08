@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   faUser = faUser;
   isLoggedIn: boolean;
   username: string;
+  isMenuCollapsed: boolean = true;
 
   constructor(private authService: AuthService, private router: Router) { }
 

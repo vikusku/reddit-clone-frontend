@@ -1,31 +1,84 @@
 <header>
   <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
-    <a href="/" class="navbar-brand d-flex w-50 mr-auto">Navbar 3</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+    <!-- Logo -->
+    <a aria-label="Home" class="logo" routerLink="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="reddit-icon-svg">
+          <g>
+              <circle fill="#FF4500" cx="10" cy="10" r="10"></circle>
+              <path fill="#FFF"
+                  d="M16.67,10A1.46,1.46,0,0,0,14.2,9a7.12,7.12,0,0,0-3.85-1.23L11,4.65,13.14,5.1a1,1,0,1,0,.13-0.61L10.82,4a0.31,0.31,0,0,0-.37.24L9.71,7.71a7.14,7.14,0,0,0-3.9,1.23A1.46,1.46,0,1,0,4.2,11.33a2.87,2.87,0,0,0,0,.44c0,2.24,2.61,4.06,5.83,4.06s5.83-1.82,5.83-4.06a2.87,2.87,0,0,0,0-.44A1.46,1.46,0,0,0,16.67,10Zm-10,1a1,1,0,1,1,1,1A1,1,0,0,1,6.67,11Zm5.81,2.75a3.84,3.84,0,0,1-2.47.77,3.84,3.84,0,0,1-2.47-.77,0.27,0.27,0,0,1,.38-0.38A3.27,3.27,0,0,0,10,14a3.28,3.28,0,0,0,2.09-.61A0.27,0.27,0,1,1,12.48,13.79Zm-0.18-1.71a1,1,0,1,1,1-1A1,1,0,0,1,12.29,12.08Z">
+              </path>
+          </g>
+      </svg>
+      <span class="mr-3 reddit-text">
+          Spring Reddit Clone
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed" data-toggle="collapse" data-target="#collapsingNavbar3">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+
+    <div [ngbCollapse]="isMenuCollapsed" class="navbar-collapse collapse w-75" id="collapsingNavbar3">
+      <!-- Main menu section -->
         <ul class="navbar-nav w-100 justify-content-center">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Link</a>
+            <li
+              class="nav-item px-4"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+                <a
+                  class="nav-link h6"
+                  [routerLink]="['/']"
+                  (click)="isMenuCollapsed = true">Hot
+                </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="//codeply.com">Codeply</a>
+            <li
+              class="nav-item px-4"
+              routerLinkActive="active">
+                <a
+                  class="nav-link h6"
+                  [routerLink]="['/top']"
+                  (click)="isMenuCollapsed = true">Top
+                </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+            <li
+              class="nav-item px-4"
+              routerLinkActive="active">
+                <a
+                  class="nav-link h6"
+                  [routerLink]="['/new']"
+                  (click)="isMenuCollapsed = true">New
+                </a>
             </li>
         </ul>
+
+        <!-- Login section -->
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Right</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Right</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Right</a>
-            </li>
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a class="float-right sign-up mr-2" routerLink="/sign-up">Sign up</a>
+          </li>
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a class="loat-right login mr-2" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="isLoggedIn" ngbDropdown>
+            <a class="nav-link dropdown-toggle userdetails" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+              <img class="account-icon" src="https://www.redditstatic.com/avatars/avatar_default_08_D4E815.png">
+                  {{username}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" ngbDropdownMenu>
+              <a
+                class="dropdown-item"
+                (click)="goToUserProfile()"
+                style="cursor: pointer;"
+                ngbDropdownItem>Profile
+              </a>
+              <a
+                class="dropdown-item"
+                (click)="logout()"
+                style="cursor: pointer;"
+                ngbDropdownItem>Logout
+              </a>
+            </div>
+          </li>
         </ul>
     </div>
   </nav>
