@@ -5,14 +5,14 @@
     <div class="col-md-11">
         <span>
             <span class="subreddit-info"><a class="posturl" routerLink="">{{post.subredditName}}</a></span>
-            <span class="user-info">Posted by <a class="username" routerLink="/user/{{post.userName}}">{{post.userName}}</a> {{post.duration}}</span>
+            <span class="user-info">Posted by <a class="username" routerLink="/user-profile/{{post.userName}}">{{post.userName}}</a> {{post.duration}}</span>
         </span>
         <hr />
         <div class="post-title">
             <a class="postname" (click)="goToPost(post.id)">{{post.postName}}</a>
         </div>
         <div>
-                <p class="post-text" [innerHtml]="post.description"></p>
+            <p class="post-text" [innerHtml]="post.description"></p>
         </div>
         <hr />
         <span>

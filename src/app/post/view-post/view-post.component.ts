@@ -22,7 +22,7 @@ export class ViewPostComponent implements OnInit {
 
   constructor(private postService: PostService, private activateRoute: ActivatedRoute,
     private commentService: CommentService, private router: Router) {
-    this.postId = this.activateRoute.snapshot.params.id;
+    this.postId = +this.activateRoute.snapshot.params.id;
 
     this.commentForm = new FormGroup({
       text: new FormControl('', Validators.required)
@@ -49,10 +49,9 @@ export class ViewPostComponent implements OnInit {
   }
 
   private getPostById() {
-    console.log("getPostById")
     this.postService.getPost(this.postId).subscribe(data => {
+      console.log(data);
       this.post = data;
-      console.log("Fetched post")
     }, error => {
       throwError(error);
     });

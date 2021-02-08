@@ -56,13 +56,13 @@ import { ViewPostComponent } from './post/view-post/view-post.component';
     EditorModule,
     NgbModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
-  ],
+  // providers: [
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: TokenInterceptor,
+  //     multi: true
+  //   }
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
