@@ -25,22 +25,22 @@ export class MockDataService {
 
   posts: Array<PostModel> = [
     this.createPostModel(
-      11, this.getLongPostTitle(), 'http://google.com', this.getLongText(), 127, 'test1test1test1',
+      11, this.getLongPostTitle(), 'http://google.com', this.getLongText(), 1271, 'test1test1test1',
       'First subreddit', 5, 'almost two years ago', false, false),
     this.createPostModel(
       12, this.getLongPostTitle(), 'http://google.com', this.getLongText(), 127, 'test1test1test1',
       'First subreddit', 5, '4 days ago', false, false),
     this.createPostModel(
-      13, this.getLongPostTitle(), 'http://google.com', this.getLongText(), 127, 'test1test1test1',
+      13, this.getLongPostTitle(), 'http://google.com', this.getLongText(), 27, 'test1test1test1',
       'First subreddit', 5, '4 days ago', false, false),
     this.createPostModel(
-      14, this.getShortPostTitle(), 'http://google.com', this.getShortText(), 127, 'test1test1test1',
+      14, this.getShortPostTitle(), 'http://google.com', this.getShortText(), 2, 'test1test1test1',
       'First subreddit', 5, 'just now', true, false),
     this.createPostModel(
       15, this.getShortPostTitle(), 'http://google.com', this.getShortText(), 127, 'test1test1test1',
       'First subreddit', 5, 'just now', true, false),
     this.createPostModel(
-      16, this.getShortPostTitle(), 'http://google.com', this.getShortText(), 127, 'test1test1test1',
+      16, this.getShortPostTitle(), 'http://google.com', this.getShortText(), 12799, 'test1test1test1',
       'Second subreddit second subreddit second subreddit', 5, '9 minutes ago', true, false),
     this.createPostModel(
       17, this.getSuperShortPostTitle(), 'http://google.com', this.getSuperShortText(), 127, 'test1test1test1', 'First subreddit', 5, '3 hours ago', false, true),
@@ -66,7 +66,7 @@ export class MockDataService {
     this.subreddits.push(subredditModel);
   }
 
-  getAllPosts(): Array<PostModel> {
+  getAllMockedPosts(): Array<PostModel> {
     return this.posts.slice();
   }
 

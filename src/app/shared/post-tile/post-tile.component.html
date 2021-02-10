@@ -1,28 +1,28 @@
-<div class="row post" *ngFor="let post of posts">
-    <div class="col-md-1">
-        <app-vote-button [post]="post"></app-vote-button>
-    </div>
-    <div class="col-md-11">
-        <span>
-            <span class="subreddit-info"><a class="posturl" routerLink="">{{post.subredditName}}</a></span>
-            <span class="user-info">Posted by <a class="username" routerLink="/user-profile/{{post.userName}}">{{post.userName}}</a> {{post.duration}}</span>
-        </span>
-        <hr />
-        <div class="post-title">
-            <a class="postname" (click)="goToPost(post.id)">{{post.postName}}</a>
-        </div>
-        <div>
-            <p class="post-text" [innerHtml]="post.description"></p>
-        </div>
-        <hr />
-        <span>
-            <a class="btnCommments" role="button" (click)="goToPost(post.id)">
-                <fa-icon [icon]="faComments"></fa-icon>
-                Comments({{post.commentCount}})
-            </a>
-            <button class="login" (click)="goToPost(post.id)">
-                Read Post
-            </button>
-        </span>
-    </div>
+<div class="row post">
+  <div class="col-md-1">
+      <app-vote-button [post]="post"></app-vote-button>
+  </div>
+  <div class="col-md-11">
+      <span>
+          <span class="subreddit-info"><a class="posturl" routerLink="">{{post.subredditName}}</a></span>
+          <span class="user-info">Posted by <a class="username" routerLink="/user-profile/{{post.userName}}">{{post.userName}}</a> {{post.duration}}</span>
+      </span>
+      <hr />
+      <div class="post-title">
+          <a class="postname" (click)="goToPost(post.id)">{{post.postName}}</a>
+      </div>
+      <div>
+          <p class="post-text" [innerHtml]="post.description"></p>
+      </div>
+      <hr />
+      <span>
+          <a class="btnCommments" role="button" (click)="goToPost(post.id)">
+              <fa-icon [icon]="faComments"></fa-icon>
+              Comments({{post.commentCount}})
+          </a>
+          <button class="login" (click)="goToPost(post.id)">
+              Read Post
+          </button>
+      </span>
+  </div>
 </div>

@@ -1,2 +1,4 @@
 <p>NEW POSTS</p>
-<app-post-tile [posts]="posts"></app-post-tile>
+<div *ngFor="let post of posts">
+  <app-post-tile [post]="post"></app-post-tile>
+</div>

@@ -26,7 +26,8 @@ export class VoteButtonComponent implements OnInit {
 
   constructor(private voteService: VoteService,
     private authService: AuthService,
-    private postService: PostService, private toastr: ToastrService) {
+    private postService: PostService,
+    private toastr: ToastrService) {
 
     this.votePayload = {
       voteType: undefined,
@@ -36,7 +37,8 @@ export class VoteButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updateVoteDetails();
+    // TODO not clear why post here need to be update independently
+    // this.updateVoteDetails();
   }
 
   upvotePost() {

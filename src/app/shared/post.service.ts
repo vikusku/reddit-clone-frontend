@@ -17,7 +17,7 @@ export class PostService {
     // return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts/hot');
 
     return new Observable(subscriber => {
-      subscriber.next(this.mockDataService.getAllPosts());
+      subscriber.next(this.mockDataService.getAllMockedPosts());
       subscriber.complete();
     });
   }
@@ -26,7 +26,7 @@ export class PostService {
     // return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts/top');
 
     return new Observable(subscriber => {
-      subscriber.next(this.mockDataService.getAllPosts());
+      subscriber.next(this.mockDataService.getAllMockedPosts());
       subscriber.complete();
     });
   }
@@ -35,16 +35,7 @@ export class PostService {
     // return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts/new');
 
     return new Observable(subscriber => {
-      subscriber.next(this.mockDataService.getAllPosts());
-      subscriber.complete();
-    });
-  }
-
-  getAllPosts(): Observable<Array<PostModel>> {
-    // return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts');
-
-    return new Observable(subscriber => {
-      subscriber.next(this.mockDataService.getAllPosts());
+      subscriber.next(this.mockDataService.getAllMockedPosts());
       subscriber.complete();
     });
   }
@@ -72,7 +63,7 @@ export class PostService {
 
     if (name === 'test1test1test1') {
       return new Observable(subscriber => {
-        subscriber.next(this.mockDataService.getAllPosts());
+        subscriber.next(this.mockDataService.getAllMockedPosts());
         subscriber.complete();
       });
     } else {
