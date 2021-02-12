@@ -1,24 +1,41 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { PostModel } from './post-model';
 import { Observable } from 'rxjs';
 import { CreatePostPayload } from '../post/create-post/create-post.payload';
 import { MockDataService } from './mock-data.service';
+import { WindowScrollService } from './window-scroll.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor(private http: HttpClient, private mockDataService: MockDataService) { }
+  constructor(
+    private http: HttpClient,
+    private windowScrollService: WindowScrollService,
+    private mockDataService: MockDataService) { }
 
-  getHotPosts(): Observable<Array<PostModel>> {
-    // return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts/hot');
+  getHotPosts(pageNo: number, pageSize: number): Observable<Array<PostModel>> {
+    // return this.http.get<Array<PostModel>>(
+    //   'http://localhost:8080/api/posts/hot',
+    //   {
+    //     params: new HttpParams()
+    //       .append('pageNo', pageNo.toString())
+    //       .append('pageSize', pageSize.toString())
+    //   });
 
     return new Observable(subscriber => {
-      subscriber.next(this.mockDataService.getAllMockedPosts());
-      subscriber.complete();
+      if (pageNo === 0) {
+        subscriber.next(this.mockDataService.getPagedPosts(pageNo, pageSize));
+        subscriber.complete();
+      } else {
+        setTimeout(()=> {
+          subscriber.next(this.mockDataService.getPagedPosts(pageNo, pageSize));
+          subscriber.complete();
+        }, 1000)
+      }
     });
   }
 
