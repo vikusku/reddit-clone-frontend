@@ -1,5 +1,9 @@
 <p>HOT POSTS</p>
-<div *ngFor="let post of posts">
+<div
+    infiniteScroll
+    [infiniteScrollDistance]="0"
+    (scrolled)="onScroll()"
+  *ngFor="let post of posts">
   <app-post-tile [post]="post"></app-post-tile>
 </div>
 <button class="btn btn-primary" (click)="loadMore()">Load more</button>

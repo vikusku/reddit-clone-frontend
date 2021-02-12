@@ -5,7 +5,6 @@ import { PostModel } from './post-model';
 import { Observable } from 'rxjs';
 import { CreatePostPayload } from '../post/create-post/create-post.payload';
 import { MockDataService } from './mock-data.service';
-import { WindowScrollService } from './window-scroll.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,6 @@ export class PostService {
 
   constructor(
     private http: HttpClient,
-    private windowScrollService: WindowScrollService,
     private mockDataService: MockDataService) { }
 
   getHotPosts(pageNo: number, pageSize: number): Observable<Array<PostModel>> {

@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedModule } from "../shared/shared.module";
 import { HomeComponent } from "./home.component";
 import { HotPostsComponent } from './hot-posts/hot-posts.component';
@@ -23,6 +24,7 @@ const homeRouting: Routes = [
     NewPostsComponent
   ], imports: [
     SharedModule,
+    InfiniteScrollModule,
     RouterModule.forChild(homeRouting)
   ]
 })

@@ -1,46 +1,46 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { PostModel } from 'src/app/shared/post-model';
 import { PostService } from 'src/app/shared/post.service';
-import { WindowScrollService } from 'src/app/shared/window-scroll.service';
 
 @Component({
   selector: 'app-hot-posts',
   templateUrl: './hot-posts.component.html',
   styleUrls: ['./hot-posts.component.css']
 })
-export class HotPostsComponent implements OnInit, OnDestroy {
+export class HotPostsComponent implements OnInit {
 
   pageNo: number = 0;
-  pageSize: number = 3;
+  pageSize: number = 5;
   posts: Array<PostModel> = [];
-  scrollSubscription: Subscription;
 
-  constructor(private postService: PostService, private windowScrollService: WindowScrollService) {}
+  constructor(private postService: PostService) {}
 
   ngOnInit(): void {
+    console.log('document.body.offsetHeight ' + document.body.offsetHeight);
+    console.log('window.innerHeight ' + window.innerHeight);
+
     this.postService.getHotPosts(this.pageNo, this.pageSize)
       .subscribe(posts => {
         this.posts = posts;
         this.pageNo++;
       });
-
-    // this.windowScrollService.windowPosition$.subscribe(updatedPosition => {
-    //   let scrollHeight = this.windowScrollService.getScrollHeight();
-    //   if (updatedPosition >= scrollHeight && this.pageNo > 0) {
-    //     console.log('Loading page ' + this.pageNo);
-    //     this.postService.getHotPosts(this.pageNo, this.pageSize)
-    //       .subscribe(posts => {
-    //         console.log('Loaded page ' + posts);
-    //         this.posts.push(...posts);
-    //         this.pageNo++;
-    //       });
-    //   }
-    // })
   }
 
-  ngOnDestroy(): void {
-    this.scrollSubscription.unsubscribe();
+  onScroll(): void {
+    console.log('hello')
+    console.log(window.scrollY);
+
+    if (window.innerHeight + window.scrollY >= this.getScrollHeight()) {
+      console.log('bottom');
+    }
+  }
+
+  getScrollHeight(): number {
+    return Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
   }
 
   loadMore(): void {
