@@ -1,0 +1,7 @@
+<div class="container">
+  <div *ngFor="let post of posts">
+    <app-debug-post-tile [post]="post"></app-debug-post-tile>
+  </div>
+  <button class="btn btn-primary" (click)="loadMore()">Load more</button>
+</div>
+

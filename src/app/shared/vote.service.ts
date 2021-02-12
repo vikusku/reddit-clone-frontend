@@ -13,7 +13,6 @@ export class VoteService {
   vote(votePayload: VotePayload): Observable<any> {
     // return this.http.post('http://localhost:8080/api/votes', votePayload);
 
-    console.log("Voted "+ votePayload);
     return new Observable(subscriber => {
       subscriber.complete();
     })

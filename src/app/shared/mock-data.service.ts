@@ -25,29 +25,31 @@ export class MockDataService {
 
   posts: Array<PostModel> = [
     this.createPostModel(
-      11, this.getLongPostTitle(), 'http://google.com', this.getLongText(), 1271, 'test1test1test1',
+      11, 'POST 11 ' +  this.getLongPostTitle(), 'http://google.com', this.getLongText(), 1271, 'test1test1test1',
       'First subreddit', 5, 'almost two years ago', false, false),
     this.createPostModel(
-      12, this.getLongPostTitle(), 'http://google.com', this.getLongText(), 127, 'test1test1test1',
+      12, 'POST 12 ' +  this.getLongPostTitle(), 'http://google.com', this.getLongText(), 127, 'test1test1test1',
       'First subreddit', 5, '4 days ago', false, false),
     this.createPostModel(
-      13, this.getLongPostTitle(), 'http://google.com', this.getLongText(), 27, 'test1test1test1',
+      13, 'POST 13 ' +  this.getLongPostTitle(), 'http://google.com', this.getLongText(), 27, 'test1test1test1',
       'First subreddit', 5, '4 days ago', false, false),
+
     this.createPostModel(
-      14, this.getShortPostTitle(), 'http://google.com', this.getShortText(), 2, 'test1test1test1',
+      14, 'POST 14 ' +  this.getShortPostTitle(), 'http://google.com', this.getShortText(), 2, 'test1test1test1',
       'First subreddit', 5, 'just now', true, false),
     this.createPostModel(
-      15, this.getShortPostTitle(), 'http://google.com', this.getShortText(), 127, 'test1test1test1',
+      15, 'POST 15 ' +  this.getShortPostTitle(), 'http://google.com', this.getShortText(), 127, 'test1test1test1',
       'First subreddit', 5, 'just now', true, false),
     this.createPostModel(
-      16, this.getShortPostTitle(), 'http://google.com', this.getShortText(), 12799, 'test1test1test1',
+      16, 'POST 16 ' +  this.getShortPostTitle(), 'http://google.com', this.getShortText(), 12799, 'test1test1test1',
       'Second subreddit second subreddit second subreddit', 5, '9 minutes ago', true, false),
+
     this.createPostModel(
-      17, this.getSuperShortPostTitle(), 'http://google.com', this.getSuperShortText(), 127, 'test1test1test1', 'First subreddit', 5, '3 hours ago', false, true),
+      17, 'POST 17 ' + this.getSuperShortPostTitle(), 'http://google.com', this.getSuperShortText(), 127, 'test1test1test1', 'First subreddit', 5, '3 hours ago', false, true),
     this.createPostModel(
-      18, this.getSuperShortPostTitle(), 'http://google.com', this.getSuperShortText(), 127, 'test1test1test1', 'First subreddit', 5, 'over a year ago', false, true),
+      18, 'POST 18 ' + this.getSuperShortPostTitle(), 'http://google.com', this.getSuperShortText(), 127, 'test1test1test1', 'First subreddit', 5, 'over a year ago', false, true),
     this.createPostModel(
-      19, this.getSuperShortPostTitle(), 'http://google.com', this.getSuperShortText(), 127, 'test1test1test1', 'Second subreddit second subreddit second subreddit', 5, 'about a year ago', false, true),
+      19, 'POST 19 ' + this.getSuperShortPostTitle(), 'http://google.com', this.getSuperShortText(), 127, 'test1test1test1', 'Second subreddit second subreddit second subreddit', 5, 'about a year ago', false, true),
   ];
 
   comments: Array<CommentPayload> = [
@@ -64,6 +66,11 @@ export class MockDataService {
 
   addSubreddit(subredditModel: SubredditModel): void {
     this.subreddits.push(subredditModel);
+  }
+
+  getPagedPosts(pageNo: number, pageSize: number): Array<PostModel> {
+    const start = pageNo * pageSize;
+    return this.posts.slice(start, start + pageSize);
   }
 
   getAllMockedPosts(): Array<PostModel> {

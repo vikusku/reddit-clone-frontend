@@ -26,6 +26,8 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ViewPostComponent } from './post/view-post/view-post.component';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
+import { DebugDuckComponent } from './debug-duck/debug-duck.component';
+import { DebugPostTileComponent } from './debug-duck/debug-post-tile/debug-post-tile.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { SharedModule } from './shared/shared.module';
     CreatePostComponent,
     ListSubredditsComponent,
     ViewPostComponent,
+    DebugDuckComponent,
+    DebugPostTileComponent,
   ],
   imports: [
     BrowserModule,
